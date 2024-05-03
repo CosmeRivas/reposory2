@@ -1,0 +1,78 @@
+package combobox.practica;
+
+import java.util.Vector;
+import java.sql.*;
+
+/**
+ *
+ * @author RIVAS
+ */
+public class Barrios {
+
+    private String provincias;
+    private int id;
+    private int idBarrio;
+
+    public int getIdBarrio() {
+        return idBarrio;
+    }
+
+    public void setIdBarrio(int idBarrio) {
+        this.idBarrio = idBarrio;
+    }
+
+    public void setProvincia(String provincia) {
+        this.provincias = provincia;
+    }
+
+    public String getProvincias() {
+        return provincias;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String toString() {
+        return provincias;
+    }
+    int idd;
+    public Vector<Barrios> LosBarrios(int id) {
+        Vector<Barrios> datos = new Vector();
+        Barrios dat = null;
+        Connection con = null;
+        this.idd = id;
+        System.out.println("id "+idd);
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+             con = DriverManager.getConnection("jdbc:mysql://localhost/practica", "root", "");
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select * from barrios where codBarrio = "+ idd);
+            dat = new Barrios();
+            dat.setId(0);
+            dat.setProvincia("Selecciona");
+            datos.add(dat);
+            while (rs.next()) {
+                dat = new Barrios();
+                dat.setId(Integer.parseInt(rs.getString("id")));
+                dat.setProvincia(rs.getString("barios"));
+                datos.add(dat);
+                System.out.println("dd"+datos);
+            }
+        } catch (Exception e) {
+            System.err.print(e);
+        }
+        finally{
+            try{
+                con.close();
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+        }
+        return datos;
+    }
+}
