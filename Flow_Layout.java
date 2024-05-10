@@ -1,3 +1,4 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -34,6 +35,10 @@ public class Flow_Layout extends Frame{
         add(b1);
         add(b2);
         add(b3);
+    }
+    public void flo(){
+        FlowLayout flow = new FlowLayut(2, 13, 10);
+        setLayout(flow);
     }
     public static void main(String[] args) {
         Flow_Layout rivas = new Flow_Layout();
