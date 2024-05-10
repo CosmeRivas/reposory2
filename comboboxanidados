@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package combobox.practica;
 
 import javax.swing.*;
@@ -17,6 +14,7 @@ public class ComboAnidado extends javax.swing.JFrame {
     public ComboAnidado() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
         elCombo();
     }
 
