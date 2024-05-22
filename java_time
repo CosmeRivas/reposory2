@@ -1,0 +1,13 @@
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
+public class Mainn {
+    public static void main(String[] args) {
+        String horaString = "10:30:00";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        LocalTime hora = LocalTime.parse(horaString, formatter);
+        System.out.println("Hora: " + hora);
+    }
+} 
+    
+
