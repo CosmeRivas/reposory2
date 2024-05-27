@@ -1,0 +1,55 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class DynamicFunctionGenerator extends JFrame {
+    private JButton generarButton;
+    private int contador;
+
+    public DynamicFunctionGenerator() {
+        setTitle("Generador de Funciones Dinámicas");
+        setSize(300, 200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Crear el botón
+        generarButton = new JButton("Generar Función");
+        generarButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                generarFuncion();
+            }
+        });
+
+        // Agregar el botón al panel
+        JPanel panel = new JPanel();
+        panel.add(generarButton);
+
+        // Agregar el panel al frame
+        add(panel);
+
+        // Inicializar el contador
+        contador = 1;
+    }
+    // Método para generar una nueva función
+    private void generarFuncion() {
+        // Crear una nueva función cada vez que se presiona el botón
+        String nombreFuncion = "funcion" + contador;
+        String codigoFuncion = "public static void " + nombreFuncion + "() {\n" +
+                               "    System.out.println(\"Esta es la función " + nombreFuncion + "\");\n" +
+                               "}\n";
+        
+        // Incrementar el contador
+        contador++;
+
+        // Imprimir el código de la función
+        System.out.println("Código de la función generada:\n" + codigoFuncion);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                DynamicFunctionGenerator frame = new DynamicFunctionGenerator();
+                frame.setVisible(true);
+            }
+    });
+    }
+}
